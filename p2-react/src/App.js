@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Welcome from "./pages/welcomePage";
-
+import { BrowserRouter, Routes, Route, Router, Link } from "react-router-dom";
+import Dashboard from "./components/dashboard";
+import Login from "./components/login";
+import { Signup } from "./components/signup";
+import CreateQuiz from "./components/create-a-quiz";
 
 
 function App() {
+  // const [token, setToken] = useState();
+  // if(!token){
+  //   return <Login setToken={setToken}/>
+  // }
+  // const userId= localStorage.getItem()
+// if (!userData){
+//   return <Login/>
+// }
+
   return (
-   <React.Fragment>
     <div className="container">
-    <Welcome/>
+      <BrowserRouter>
+        <Routes>
+
+          <Route path="/" element={<Dashboard />}>
+
+          </Route>
+
+          <Route path="/login" element={<Login />}>
+
+          </Route>
+
+          <Route path="/signup" element={<Signup />}>
+
+          </Route>
+
+          <Route path="/createQuiz" element={<CreateQuiz />}>
+          </Route>
+
+        </Routes>
+
+
+
+      </BrowserRouter>
+
+
     </div>
-    </React.Fragment>
   );
 }
 
