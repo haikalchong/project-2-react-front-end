@@ -7,6 +7,8 @@ import { Signup } from "./components/signup";
 import CreateQuiz from "./components/create-a-quiz";
 
 
+
+
 function App() {
   // const [token, setToken] = useState();
   // if(!token){
@@ -15,6 +17,12 @@ function App() {
   // const userId= localStorage.getItem()
 // if (!userData){
 //   return <Login/>
+// }
+
+
+// componentDidMount(){
+//   const token = localStorage.getItem("token")
+
 // }
 
   return (

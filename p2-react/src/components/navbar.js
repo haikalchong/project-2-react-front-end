@@ -27,7 +27,7 @@ export function Navbar(props) {
                         </li>
                         <li className="nav-item">
 
-                            <a className="nav-link" href="#">Create a Quiz</a>
+                            <a className="nav-link" href="/createQuiz">Create a Quiz</a>
 
                         </li>
                     </ul>

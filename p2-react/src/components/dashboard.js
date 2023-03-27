@@ -6,8 +6,6 @@ export default function Dashboard() {
         <React.Fragment>
             <h2>Quizholic</h2>
             <Navbar/>
-            
-
         </React.Fragment>
 
     );
