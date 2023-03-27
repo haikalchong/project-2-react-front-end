@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
  const signup= async function createNewAccount() {
 
-    const dburl = "https://2999-haikalchong-project2bac-el2gxlkwdlx.ws-us92.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-dpk1rywl7wl.ws-us92.gitpod.io"
     const newUser = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -24,7 +24,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 
   const userLogin =  async(email,password)=> {
-    const dburl = "https://2999-haikalchong-project2bac-el2gxlkwdlx.ws-us92.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-dpk1rywl7wl.ws-us92.gitpod.io"
     console.log(email,password)
     const userid = {
         email: email,

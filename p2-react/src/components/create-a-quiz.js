@@ -10,11 +10,11 @@ export default class CreateQuiz extends React.Component {
         quizName: "",
         createdBy: "",
         questions: [],
-
+        optionStatus:false,
         createdQuestion: "",
         createdOption: [],
-        optionValue: "",
-        optionScore: "",
+        optionName: "",
+        optionArr: []
 
 
 
@@ -29,6 +29,7 @@ export default class CreateQuiz extends React.Component {
         })
     }
     render() {
+       
         return <React.Fragment>
             <div className="container">
                 <div>
@@ -40,17 +41,20 @@ export default class CreateQuiz extends React.Component {
 
                 <div>
                     {this.state.questions.map(
-                        (q) => {
+                        (q,r) => {
                             return (
                                 <React.Fragment>
 
                                     <div>
-                                        {<QuestionCard name={q.question}
+                                        {<QuestionCard key={r}
+                                        name={q.question}
                                             updateFormField={this.updateFormField}
-                                            optionScore={q.optionScore}
-                                            optionValue={q.optionValue}
+                                            optionIsCorrect={this.state.optionIsCorrect}
+                                            optionValue={this.state.optionName}
+                                            createdQuestion={q.createdQuestion} 
+                                            optionArr={this.state.optionArr}
                                             addOption={this.addOption}
-                                            createdQuestion={q.createdQuestion} />}
+                                            onSelectChange={this.onSelectChange}/>}
                                     </div>
 
 
@@ -94,21 +98,39 @@ export default class CreateQuiz extends React.Component {
         this.setState({
             questions: clone,
             createdQuestion: ''
+           
         })
 
     }
 
     addOption = () => {
-        const clone = this.state.createdOption
+        if(this.state.optionArr===[]){
+            const newOption = {
+                optionValue: this.state.optionValue,
+                optionIsCorrect: this.state.optionStatus
+            }
+            this.state.optionArr.push(newOption)
+        }else{
+        const clone = this.state.optionArr.slice()
+        console.log("clone", clone)
         const newOption = {
             optionValue: this.state.optionValue,
-            optionScore: this.state.optionScore
+            optionIsCorrect: this.state.optionStatus
         }
+        
         clone.push(newOption)
         this.setState({
-            createdOption: clone
+          optionArr: clone,
+          optionName:''
+        })
+    }}
+
+    onSelectChange = (e)=>{
+        this.setState({
+            [e.target.name]: e.target.value
         })
     }
+ 
 }
 
 
