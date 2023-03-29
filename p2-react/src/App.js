@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Router, Link } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 import { Signup } from "./components/signup";
-import CreateQuiz from "./components/create-a-quiz";
+import CreateQuiz from "./components/createQuiz";
 
 
 
