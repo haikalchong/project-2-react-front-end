@@ -154,6 +154,15 @@ export default class CreateQuiz extends React.Component {
         }
 
         const addNewQuiz= await axios.post(url+"/quiz",newQuiz)
-        console.log(addNewQuiz)
+
+        let quizId= addNewQuiz.data.insertedId;
+
+        const topicToUpdate= await  axios.get(url+"/genre/"+this.state.topic)
+
+        const content=topicToUpdate.data
+       let content2=content.result
+       let quizArr=content2.quizId
+        console.log(quizArr)
+
     }
 }
