@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
 
+const url = "https://2999-haikalchong-project2bac-a6u6l5aj11p.ws-us93.gitpod.io"
+
 export default class CreateQuiz extends React.Component {
 
     state = {
@@ -78,20 +80,25 @@ export default class CreateQuiz extends React.Component {
             </React.Fragment>
         } if (this.state.page === "createQuestions") {
             return <div>
-                <RenderQuestion questions={this.state.questions}/>
+                <RenderQuestion questions={this.state.questions} />
 
-            <Question questions={this.state.questions}
-                createdQuestion={this.state.createdQuestion}
-                options={this.state.options}
-                correctAnswer={this.state.correctAnswer}
-                optionFirst={this.state.optionFirst}
-                optionSecond={this.state.optionSecond}
-                optionThird={this.state.optionThird}
-                optionFourth={this.state.optionFourth}
-                updateFormField={this.updateFormField}
-                addQuestion={this.addQuestion} />
+                <Question questions={this.state.questions}
+                    createdQuestion={this.state.createdQuestion}
+                    options={this.state.options}
+                    correctAnswer={this.state.correctAnswer}
+                    optionFirst={this.state.optionFirst}
+                    optionSecond={this.state.optionSecond}
+                    optionThird={this.state.optionThird}
+                    optionFourth={this.state.optionFourth}
+                    updateFormField={this.updateFormField}
+                    addQuestion={this.addQuestion} />
                 <button className="btn btn-primary btn-sm" onClick={this.addQuestion}>Add Question</button>
+                <div className="container-fluid">
+                <button className="btn btn-success btn-sm" onClick={this.addQuiz}>Add Quiz</button>
                 </div>
+
+
+            </div>
         }
     }
 
@@ -105,12 +112,12 @@ export default class CreateQuiz extends React.Component {
     addQuestion = () => {
 
         const clone = this.state.questions.slice()
-        const optionClone= this.state.options.slice()
+        const optionClone = this.state.options.slice()
         optionClone.push(this.state.optionFirst)
         optionClone.push(this.state.optionSecond)
         optionClone.push(this.state.optionThird)
         optionClone.push(this.state.optionFourth)
-        
+
         const newQuestion = {
             question: this.state.createdQuestion,
             options: optionClone,
@@ -133,5 +140,20 @@ export default class CreateQuiz extends React.Component {
 
         })
 
+    }
+
+    addQuiz = async () => {
+       
+        const newQuiz = {
+            "quizName": this.state.quizName,
+            "topic": this.state.topic,
+            "createdBy": this.state.createdBy,
+            "quizLevel": this.state.level,
+            "totalQuestions": this.state.totalQuestions,
+            "questions": this.state.questions,
+        }
+
+        const addNewQuiz= await axios.post(url+"/quiz",newQuiz)
+        console.log(addNewQuiz)
     }
 }
