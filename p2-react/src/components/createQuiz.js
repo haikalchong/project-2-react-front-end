@@ -25,14 +25,14 @@ export default class CreateQuiz extends React.Component {
     }
 
 
-    componentDidMount() {
-        const userData = localStorage.getItem("user")
-        const userDataJSON = JSON.parse(userData)
-        this.setState({
-            firstName: userDataJSON.firstName,
-            createdBy: userDataJSON._id
-        })
-    }
+    // componentDidMount() {
+    //     const userData = localStorage.getItem("user")
+    //     const userDataJSON = JSON.parse(userData)
+    //     this.setState({
+    //         firstName: userDataJSON.firstName,
+    //         createdBy: userDataJSON._id
+    //     })
+    // }
     updateFormField = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -154,15 +154,19 @@ export default class CreateQuiz extends React.Component {
         }
 
         const addNewQuiz= await axios.post(url+"/quiz",newQuiz)
+       
 
         let quizId= addNewQuiz.data.insertedId;
-
-        const topicToUpdate= await  axios.get(url+"/genre/"+this.state.topic)
-
-        const content=topicToUpdate.data
-       let content2=content.result
-       let quizArr=content2.quizId
-        console.log(quizArr)
+        const quizObj={
+            "quizId" : quizId
+        }
+        
+        // const topicToUpdate= await  axios.put(url+"/genre/"+this.state.topic,quizObj)
+        
+        // const userToUpdate= await axios.put(url+"/userQuiz/"+this.state.createdBy,quizObj)
+        console.log("obj",newQuiz.quizLevel)
+        
+       
 
     }
 }
