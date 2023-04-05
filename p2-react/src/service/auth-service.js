@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
  const signup= async function createNewAccount() {
 
-    const dburl = "https://2999-haikalchong-project2bac-a6u6l5aj11p.ws-us93.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
     const newUser = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
 
-const url = "https://2999-haikalchong-project2bac-a6u6l5aj11p.ws-us93.gitpod.io"
+const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
 
 export default class CreateQuiz extends React.Component {
 

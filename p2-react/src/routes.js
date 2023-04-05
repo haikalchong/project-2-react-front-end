@@ -14,6 +14,7 @@ import Login from "./components/login";
 import { Signup } from "./components/signup";
 import CreateQuiz from "./components/createQuiz";
 import { AppWrapper } from "./components/AppWrapper";
+import { DoQuiz } from "./components/doQuiz";
 
 
 export class AppRoute extends React.Component {
@@ -56,6 +57,8 @@ export class AppRoute extends React.Component {
                 <Route path="/login" element={<Login />}>
 
                 </Route>
+
+                <Route path="/doQuiz" element={<DoQuiz/>}></Route>
 
                 <Route path="/signup" element={<Signup />}>
 
