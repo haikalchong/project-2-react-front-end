@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { StartQuiz } from './startQuiz'
+import { Navbar } from "./navbar";
 
 
 export class DoQuiz extends React.Component {
@@ -45,12 +46,15 @@ export class DoQuiz extends React.Component {
                             <li>{d.topic}</li>
                             <li>{d.quizLevel}</li>
                             <li>{d.totalQuestions}</li>
+                            <li>{d.description}</li>
                            </ul>
                            <button onClick={()=>{
                             this.setState({
                                 activePage:"start",
                                 id:d._id,
-                                questions:d.questions
+                                questions:d.questions,
+                                totalQuestions:d.totalQuestions
+
                             })
                            }}>Start Quiz</button>
                             </div>
@@ -73,10 +77,15 @@ export class DoQuiz extends React.Component {
                 })}
             </ul>
             <button  name="activeQuestion" onClick={()=>{
+                if(this.state.activeQuestion < this.state.totalQuestions -1){
                 this.setState({
                     activeQuestion:this.state.activeQuestion+1
-                })
-            }}>Next Question</button>
+                })}else{
+                    this.setState({
+                        activePage:'result'
+                    })
+                }
+            }}>Next</button>
          </div>
 
 
@@ -91,7 +100,7 @@ export class DoQuiz extends React.Component {
 
     render() {
         return <React.Fragment>
-            
+            <Navbar />
             {this.renderPage()}
             {/* {this.state.quizzes?.map(q => {
 

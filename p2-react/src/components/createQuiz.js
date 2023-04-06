@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
+import { Navbar } from "./navbar";
 
 const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
 
@@ -13,6 +14,7 @@ export default class CreateQuiz extends React.Component {
         level: 'beginner',
         totalQuestions: '',
         questions: [],
+        description:"",
 
         page: "createQuiz",
         createdQuestion: '',
@@ -65,6 +67,9 @@ export default class CreateQuiz extends React.Component {
                         <label>Number of questions</label>
                         <input type="number" value={this.state.totalQuestions} name="totalQuestions" onChange={this.updateFormField} />
 
+                        <label>Quiz Description</label>
+                        <textarea value={this.state.description} name="description" onChange={this.updateFormField}/>
+
 
                         <button className="btn btn-primary btn-sm" onClick={() => {
                             this.setState({
@@ -105,6 +110,7 @@ export default class CreateQuiz extends React.Component {
     render() {
 
         return <div>
+            <Navbar />
             {this.renderPage()}
         </div>
     }
@@ -151,6 +157,7 @@ export default class CreateQuiz extends React.Component {
             "quizLevel": this.state.level,
             "totalQuestions": this.state.totalQuestions,
             "questions": this.state.questions,
+            "description":this.state.description
         }
 
         const addNewQuiz= await axios.post(url+"/quiz",newQuiz)
