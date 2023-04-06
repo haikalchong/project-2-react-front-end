@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export function Navbar(props) {
@@ -11,7 +12,7 @@ export function Navbar(props) {
 
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="#">Quizholic</a>
+                    <a className="navbar-brand" href="#">A Wannabe</a>
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 

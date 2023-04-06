@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { StartQuiz } from './startQuiz'
+
 import { Navbar } from "./navbar";
 
 
@@ -11,6 +11,10 @@ export class DoQuiz extends React.Component {
         score: 0,
         activePage: "quiz",
         quizzes: [],
+        selectedOption: "",
+        
+        
+
 
     }
 
@@ -23,16 +27,24 @@ export class DoQuiz extends React.Component {
         return result.data;
     }
 
-    componentDidMount =async() =>{
+    componentDidMount = async () => {
         const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
         console.log(result.data.result)
         this.setState({
-            quizzes: result.data.result
-        })
-       }
+            quizzes: result.data.result,
+            totalQuestions: result.data.result.totalQuestions
 
-    renderPage =  () => {
+        })
+    }
+
+    getCorrectAnswer=()=>{
+        this.setState({
+            correctAnswer: this.state.quizzes[this.state.activeQuestion].correctAnswer
+        })
+    }
+
+    renderPage = () => {
 
         if (this.state.activePage === "quiz") {
             return <React.Fragment>
@@ -43,58 +55,100 @@ export class DoQuiz extends React.Component {
                             return <div className="container" key={e}>
                                 <h5> {d.quizName} </h5>
                                 <ul>
-                            <li>{d.topic}</li>
-                            <li>{d.quizLevel}</li>
-                            <li>{d.totalQuestions}</li>
-                            <li>{d.description}</li>
-                           </ul>
-                           <button onClick={()=>{
-                            this.setState({
-                                activePage:"start",
-                                id:d._id,
-                                questions:d.questions,
-                                totalQuestions:d.totalQuestions
+                                    <li>{d.topic}</li>
+                                    <li>{d.quizLevel}</li>
+                                    <li>{d.totalQuestions}</li>
+                                    <li>{d.description}</li>
+                                </ul>
+                                <button onClick={() => {
+                                    this.setState({
+                                        activePage: "start",
+                                        id: d._id,
+                                        questions: d.questions,
+                                        totalQuestions: d.totalQuestions,
+                                        correctAnswer: d.questions[this.state.activeQuestion].correctAnswer
+                                        
 
-                            })
-                           }}>Start Quiz</button>
+                                    })
+                                }}>Start Quiz</button>
                             </div>
 
 
                         }
-                        
+
                     )}
                 </div>
             </React.Fragment>
 
-        }if(this.state.activePage==="start"){
+        } if (this.state.activePage === "start") {
+            
             return <React.Fragment>
-                  <div>
-            <h2>{this.state.questions[this.state.activeQuestion].question}</h2>
-            <ul>
-                {this.state.questions[this.state.activeQuestion].options.map(
-                    (o,i)=>{
-                    return <li key={i}>{o}</li>
-                })}
-            </ul>
-            <button  name="activeQuestion" onClick={()=>{
-                if(this.state.activeQuestion < this.state.totalQuestions -1){
-                this.setState({
-                    activeQuestion:this.state.activeQuestion+1
-                })}else{
-                    this.setState({
-                        activePage:'result'
-                    })
-                }
-            }}>Next</button>
-         </div>
+                <div>
+                    <h2>{this.state.questions[this.state.activeQuestion].question}</h2>
+                    <ul>
+                        {this.state.questions[this.state.activeQuestion].options.map(
+                            (o, i) => {
+                                return <ul key={i}>
+                                   <li><label>{o}</label> <input type="radio" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
+                                    </ul>
+                            })}
+                    </ul>
+                    <button name="activeQuestion" onClick={() => {
+                        
+                        if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
+                            
+                            this.setState({
+                                activePage: "result",
+                                score: this.state.score + 5,
+                                
+                            
+
+                            })
+                        } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+                            
+                            this.setState({
+                                activePage: "result",
+                                
+
+                            })
+                        } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
+                          
+
+                            this.setState({
+                                activeQuestion: this.state.activeQuestion + 1,
+                                score: this.state.score + 5,
+                                selectedOption: "",
+                                correctAnswer:this.state.questions[this.state.activeQuestion].correctAnswer
+                            })
+                        } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+                            
+                            this.setState({
+                                activeQuestion: this.state.activeQuestion + 1,
+                                selectedOption: "",
+                                correctAnswer:this.state.questions[this.state.activeQuestion].correctAnswer
+                            })
+                        }
+
+                    }}>Next</button>
+                </div>
 
 
             </React.Fragment>
         }
+        if(this.state.activePage==='result'){
+            return <div>
+                <h2>Congratulations you have completed the quiz!</h2>
+                <p>Your score is : {this.state.score}</p>
+                <p>Good Job!</p>
+                <p> Ready for another challenge? Click <span><a href="/doQuiz">Here</a></span> </p>
+            </div>
+
+        
+        }
     }
-    updateFormField= (e)=>{
+    updateFormField = (e) => {
         this.setState({
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -106,8 +160,8 @@ export class DoQuiz extends React.Component {
 
             return (<div>{q.quizName}</div>)
             })} */}
-            
-          
+
+
         </React.Fragment>
     }
 

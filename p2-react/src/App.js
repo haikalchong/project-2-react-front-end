@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, Router, Link,Redirect } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router, Link, Redirect } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 import { Signup } from "./components/signup";
@@ -16,26 +16,25 @@ function App() {
   //   return <Login setToken={setToken}/>
   // }
   // const userId= localStorage.getItem()
-// if (!userData){
-//   return <Login/>
-// }
+  // if (!userData){
+  //   return <Login/>
+  // }
 
 
-// componentDidMount(){
-//   const token = localStorage.getItem("token")
+  // componentDidMount(){
+  //   const token = localStorage.getItem("token")
 
-// }
+  // }
 
   return (
-    <div className="container">
 
-      <AppRoute/>
-
-
+    <React.Fragment>
+      <AppRoute />
 
 
+    </React.Fragment>
 
-    </div>
+
   );
 }
 
