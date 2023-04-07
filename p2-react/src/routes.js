@@ -15,22 +15,22 @@ import { Signup } from "./components/signup";
 import CreateQuiz from "./components/createQuiz";
 import { AppWrapper } from "./components/AppWrapper";
 import { DoQuiz } from "./components/doQuiz";
+import { Profile } from "./components/profile";
 
 
 export class AppRoute extends React.Component {
 
-    componentDidMount() {
+    componentDidMount= () =>{
 
-        const userData = localStorage.getItem("user")
+        const userData =  localStorage.getItem("user")
 
         const userDataJSON = JSON.parse(userData)
 
-        // this.setState({
-        //     // firstName: userDataJSON.firstName,
-        //     // createdBy: userDataJSON._id,
-        //     userLogged: true
-            
-        //       })
+        if(userDataJSON){
+            this.setState({
+                userLogged: true
+            })
+        }
 
     
 
@@ -58,7 +58,17 @@ export class AppRoute extends React.Component {
 
                 </Route>
 
-                <Route path="/doQuiz" element={<DoQuiz/>}></Route>
+                <Route
+                    exact
+                    path="/doQuiz"
+                    element={
+                        this.state.userLogged===true ? (
+                            <DoQuiz />
+                        ) : (
+                            <Navigate replace to={"/login"} />
+                        )
+                    }
+                />
 
                 <Route path="/signup" element={<Signup />}>
 
@@ -68,7 +78,7 @@ export class AppRoute extends React.Component {
                     exact
                     path="/createQuiz"
                     element={
-                        this.state.userLogged ? (
+                        this.state.userLogged===true ? (
                             <CreateQuiz />
                         ) : (
                             <Navigate replace to={"/login"} />
@@ -80,8 +90,19 @@ export class AppRoute extends React.Component {
                     exact
                     path="/"
                     element={
-                        this.state.userLogged ? (
+                        this.state.userLogged===true ? (
                             <Dashboard />
+                        ) : (
+                            <Navigate replace to={"/login"} />
+                        )
+                    }
+                />
+                  <Route
+                    exact
+                    path="/profile"
+                    element={
+                        this.state.userLogged===true ? (
+                            <Profile />
                         ) : (
                             <Navigate replace to={"/login"} />
                         )

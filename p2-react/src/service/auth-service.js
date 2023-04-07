@@ -1,5 +1,7 @@
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate,redirect } from "react-router-dom";
+const navigate = useNavigate;
+
 
 
  const signup= async function createNewAccount() {
@@ -16,15 +18,15 @@ import { Navigate, useNavigate } from "react-router-dom";
     const addNewUser = await axios.post(dburl + "/user", newUser)
 
 
-    this.setState({
-        login: "signin"
-    })
+ 
+
+    redirect("/");
 
 }
 
 
   const userLogin =  async(email,password)=> {
-    const dburl = "https://2999-haikalchong-project2bac-a6u6l5aj11p.ws-us93.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
     console.log(email,password)
     const userid = {
         email: email,
@@ -36,6 +38,8 @@ import { Navigate, useNavigate } from "react-router-dom";
     localStorage.setItem("user",JSON.stringify(result.data))
     
     localStorage.setItem("token", result.data.token)
+
+    redirect("/");
 
 
     

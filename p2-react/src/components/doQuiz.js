@@ -12,8 +12,8 @@ export class DoQuiz extends React.Component {
         activePage: "quiz",
         quizzes: [],
         selectedOption: "",
-        
-        
+
+
 
 
     }
@@ -38,7 +38,7 @@ export class DoQuiz extends React.Component {
         })
     }
 
-    getCorrectAnswer=()=>{
+    getCorrectAnswer = () => {
         this.setState({
             correctAnswer: this.state.quizzes[this.state.activeQuestion].correctAnswer
         })
@@ -67,7 +67,7 @@ export class DoQuiz extends React.Component {
                                         questions: d.questions,
                                         totalQuestions: d.totalQuestions,
                                         correctAnswer: d.questions[this.state.activeQuestion].correctAnswer
-                                        
+
 
                                     })
                                 }}>Start Quiz</button>
@@ -81,61 +81,75 @@ export class DoQuiz extends React.Component {
             </React.Fragment>
 
         } if (this.state.activePage === "start") {
-            
+
             return <React.Fragment>
-                <div>
-                    <h2>{this.state.questions[this.state.activeQuestion].question}</h2>
-                    <ul>
-                        {this.state.questions[this.state.activeQuestion].options.map(
-                            (o, i) => {
-                                return <ul key={i}>
-                                   <li><label>{o}</label> <input type="radio" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
-                                    </ul>
-                            })}
-                    </ul>
-                    <button name="activeQuestion" onClick={() => {
+                <div style={{
+                    backgroundColor: '#edf2f4',
+                    height: '100vh',
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: "center"
+
+                }}>
+                    <div className="card" style={{ width: "60%", height: "fit-content" }}>
+
+                      <div className="card-body">
+                        <h5 className="card-title mb-3 text-center">{this.state.questions[this.state.activeQuestion].question}</h5>
                         
-                        if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
-                            
-                            this.setState({
-                                activePage: "result",
-                                score: this.state.score + 5,
-                                
-                            
+                            {this.state.questions[this.state.activeQuestion].options.map(
+                                (o, i) => {
+                                    return  <div key={i}>
+                                        <label>{o}</label> <input type="radio" value={o} name="selectedOption" onChange={this.updateFormField} />
+                                    </div>
+                                    
+                                })}
+                        
+                        <button name="activeQuestion" className="btn btn-sm btn-primary" onClick={() => {
 
-                            })
-                        } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
-                            
-                            this.setState({
-                                activePage: "result",
-                                
+                            if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
 
-                            })
-                        } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
-                          
+                                this.setState({
+                                    activePage: "result",
+                                    score: this.state.score + 5,
 
-                            this.setState({
-                                activeQuestion: this.state.activeQuestion + 1,
-                                score: this.state.score + 5,
-                                selectedOption: "",
-                                correctAnswer:this.state.questions[this.state.activeQuestion].correctAnswer
-                            })
-                        } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
-                            
-                            this.setState({
-                                activeQuestion: this.state.activeQuestion + 1,
-                                selectedOption: "",
-                                correctAnswer:this.state.questions[this.state.activeQuestion].correctAnswer
-                            })
-                        }
 
-                    }}>Next</button>
+
+                                })
+                            } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+
+                                this.setState({
+                                    activePage: "result",
+
+
+                                })
+                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
+
+
+                                this.setState({
+                                    activeQuestion: this.state.activeQuestion + 1,
+                                    score: this.state.score + 5,
+                                    selectedOption: "",
+                                    correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
+                                })
+                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+
+                                this.setState({
+                                    activeQuestion: this.state.activeQuestion + 1,
+                                    selectedOption: "",
+                                    correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
+                                })
+                            }
+
+                        }}>Next</button>
+                        </div>  
+                    </div>
                 </div>
 
 
             </React.Fragment>
         }
-        if(this.state.activePage==='result'){
+        if (this.state.activePage === 'result') {
             return <div>
                 <h2>Congratulations you have completed the quiz!</h2>
                 <p>Your score is : {this.state.score}</p>
@@ -143,7 +157,7 @@ export class DoQuiz extends React.Component {
                 <p> Ready for another challenge? Click <span><a href="/doQuiz">Here</a></span> </p>
             </div>
 
-        
+
         }
     }
     updateFormField = (e) => {

@@ -14,7 +14,7 @@ export default class CreateQuiz extends React.Component {
         level: 'beginner',
         totalQuestions: '',
         questions: [],
-        description:"",
+        description: "",
 
         page: "createQuiz",
         createdQuestion: '',
@@ -45,39 +45,53 @@ export default class CreateQuiz extends React.Component {
     renderPage = () => {
         if (this.state.page === "createQuiz") {
             return <React.Fragment>
-                <div className="container row">
-                    <h3>Create your own Quiz!</h3>
-                    <div className="container-fluid col-12">
-                        <label>Quiz Name</label>
-                        <input type="text" value={this.state.quizName} name="quizName" onChange={this.updateFormField} />
-                    </div>
-                    <div className="container-fluid col-12">
-                        <label>Topic</label>
-                        <input type="text" value={this.state.topic} name="topic" onChange={this.updateFormField} />
-                    </div>
-                    <div className="container-fluid col-12">
-                        <label>Level</label>
-                        <select value={this.state.level} name="level" onChange={this.updateFormField}>
-                            <option value="beginner" name="level">Beginner</option>
-                            <option value="intermediate" name="level">Intermediate</option>
-                            <option value="advanced" name="level">Advanced</option>
-                        </select>
-                    </div>
-                    <div className="container-fluid col-12">
-                        <label>Number of questions</label>
-                        <input type="number" value={this.state.totalQuestions} name="totalQuestions" onChange={this.updateFormField} />
+                <div style={{
+                    backgroundColor: '#edf2f4',
+                    height: '100vh',
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: "center"
 
-                        <label>Quiz Description</label>
-                        <textarea value={this.state.description} name="description" onChange={this.updateFormField}/>
+                }}>
 
 
-                        <button className="btn btn-primary btn-sm" onClick={() => {
-                            this.setState({
-                                page: "createQuestions"
-                            })
-                        }}>Next</button>
-                    </div>
+                    <div className="card" style={{ width: "60%", height: "fit-content" }}>
 
+                        <div className="card-body">
+                            <h5 class="card-title mb-3 text-center">Create Quiz</h5>
+                            <label>Quiz Name</label>
+                            <input type="text" value={this.state.quizName} className="form-control mb-3 w-60" name="quizName" onChange={this.updateFormField} />
+
+                            <label>Topic</label>
+                            <select value={this.state.level} name="level" className="form-control mb-3 w-60" onChange={this.updateFormField}>
+                                <option value="English" name="topic">English</option>
+                                <option value="Math" name="topic">Math</option>
+                                <option value="Science" name="topic">Science</option>
+                                <option value="Humanities" name="topic">Humanities</option>
+                                <option value="Programming" name="topic">Programming</option>
+                            </select>
+
+                            <label>Level</label>
+                            <select value={this.state.level} name="level" className="form-control mb-3 w-60" onChange={this.updateFormField}>
+                                <option value="beginner" name="level">Beginner</option>
+                                <option value="intermediate" name="level">Intermediate</option>
+                                <option value="advanced" name="level">Advanced</option>
+                            </select>
+
+                            <label>Number of questions</label>
+                            <input type="number" value={this.state.totalQuestions} className="form-control mb-3 w-60" name="totalQuestions" onChange={this.updateFormField} />
+
+                            <label>Quiz Description</label>
+                            <textarea value={this.state.description} className="form-control mb-3 w-60" name="description" onChange={this.updateFormField} />
+
+                            <button className="btn btn-primary btn-sm" onClick={() => {
+                                this.setState({
+                                    page: "createQuestions"
+                                })
+                            }}>Next</button>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -99,7 +113,7 @@ export default class CreateQuiz extends React.Component {
                     addQuestion={this.addQuestion} />
                 <button className="btn btn-primary btn-sm" onClick={this.addQuestion}>Add Question</button>
                 <div className="container-fluid">
-                <button className="btn btn-success btn-sm" onClick={this.addQuiz}>Add Quiz</button>
+                    <button className="btn btn-success btn-sm" onClick={this.addQuiz}>Add Quiz</button>
                 </div>
 
 
@@ -149,7 +163,7 @@ export default class CreateQuiz extends React.Component {
     }
 
     addQuiz = async () => {
-       
+
         const newQuiz = {
             "quizName": this.state.quizName,
             "topic": this.state.topic,
@@ -157,23 +171,22 @@ export default class CreateQuiz extends React.Component {
             "quizLevel": this.state.level,
             "totalQuestions": this.state.totalQuestions,
             "questions": this.state.questions,
-            "description":this.state.description
+            "description": this.state.description
         }
 
-        const addNewQuiz= await axios.post(url+"/quiz",newQuiz)
-       
+        const addNewQuiz = await axios.post(url + "/quiz", newQuiz)
 
-        let quizId= addNewQuiz.data.insertedId;
-        const quizObj={
-            "quizId" : quizId
+
+        let quizId = addNewQuiz.data.insertedId;
+        const quizObj = {
+            "quizId": quizId
         }
+
+        const topicToUpdate = await axios.put(url + "/genre/" + this.state.topic, quizObj)
+
+        const userToUpdate = await axios.put(url + "/userQuiz/" + this.state.createdBy, quizObj)
         
-        // const topicToUpdate= await  axios.put(url+"/genre/"+this.state.topic,quizObj)
-        
-        // const userToUpdate= await axios.put(url+"/userQuiz/"+this.state.createdBy,quizObj)
-        console.log("obj",newQuiz.quizLevel)
-        
-       
+
 
     }
 }

@@ -18,12 +18,12 @@ export function Navbar(props) {
 
                         <li className="nav-item">
 
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                            <a className="nav-link active" aria-current="page" href="/">Home</a>
 
                         </li>
                         <li className="nav-item">
 
-                            <a className="nav-link" href="#">Do a Quiz</a>
+                            <a className="nav-link" href="/doQuiz">Do a Quiz</a>
 
                         </li>
                         <li className="nav-item">
@@ -31,10 +31,15 @@ export function Navbar(props) {
                             <a className="nav-link" href="/createQuiz">Create a Quiz</a>
 
                         </li>
+                        <li className="nav-item">
+
+                            <a className="nav-link" href="/profile">Profile</a>
+
+                        </li>
                     </ul>
                     <form className="d-flex">
 
-                       
+
 
                         <button className="btn btn-outline-success"><a href="/login">Login</a></button>
 

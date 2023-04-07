@@ -1,6 +1,7 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 import authService from "../service/auth-service";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate;
 
 export default class Login extends React.Component {
 
@@ -29,12 +30,13 @@ export default class Login extends React.Component {
                 <div className="card" style={{ width: "60%", height: "fit-content" }}>
 
                     <div className="card-body">
-                        <h5 class="card-title mb-3 text-center">Login</h5>
+                        <h5 className="card-title mb-3 text-center">Login</h5>
                         <label>Email</label><input type="text" className="form-control mb-3 w-60" value={this.state.email} name="email" onChange={this.updateFormField} />
                         <label>Password</label><input type="text" className="form-control mb-3 w-60" value={this.state.password} name="password" onChange={this.updateFormField} />
                         <button className="btn btn-sm btn-primary" onClick={() => {
                             authService.userLogin(this.state.email, this.state.password)
                         }}>Sign in!</button>
+                          <p>Not a member? Sign up now <a href="/signup">here!</a></p>
                     </div>
                 </div>
             </div>
