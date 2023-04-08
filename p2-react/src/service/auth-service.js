@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useNavigate,redirect } from "react-router-dom";
-const navigate = useNavigate;
+
+
 
 
 
@@ -19,8 +19,8 @@ const navigate = useNavigate;
 
 
  
-
-    redirect("/");
+    // const navigate= useNavigate()
+    // navigate("/");
 
 }
 
@@ -39,7 +39,8 @@ const navigate = useNavigate;
     
     localStorage.setItem("token", result.data.token)
 
-    redirect("/");
+    // const navigate= useNavigate()
+    // navigate("/");
 
 
     

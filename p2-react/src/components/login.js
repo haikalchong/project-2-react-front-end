@@ -1,7 +1,7 @@
 import React from "react";
 import authService from "../service/auth-service";
-import { useNavigate } from "react-router-dom";
-const navigate = useNavigate;
+import { Navigate } from "react-router-dom";
+
 
 export default class Login extends React.Component {
 

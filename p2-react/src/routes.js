@@ -28,7 +28,7 @@ export class AppRoute extends React.Component {
 
         if(userDataJSON){
             this.setState({
-                userLogged: true
+                userLogged: false
             })
         }
 
@@ -105,6 +105,7 @@ export class AppRoute extends React.Component {
                             <Profile />
                         ) : (
                             <Navigate replace to={"/login"} />
+                           
                         )
                     }
                 />
