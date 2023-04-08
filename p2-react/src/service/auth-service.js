@@ -4,18 +4,11 @@ import axios from "axios";
 
 
 
- const signup= async function createNewAccount() {
+ const signup= async (x) =>{
 
     const dburl = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
-    const newUser = {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        quizCreated: this.state.quizCreated,
-        quizDone: this.state.quizDone,
-        password: this.state.password
-    }
-    const addNewUser = await axios.post(dburl + "/user", newUser)
+  
+    const addNewUser = await axios.post(dburl + "/user", x)
 
 
  

@@ -1,6 +1,6 @@
 import React from "react";
 import authService from "../service/auth-service";
-import { Navigate } from "react-router-dom";
+
 
 
 export default class Login extends React.Component {
@@ -16,7 +16,10 @@ export default class Login extends React.Component {
         loggedin: false
     }
 
+   
+
     render() {
+        
         return <React.Fragment>
             <div style={{
                 backgroundColor: '#edf2f4',
@@ -34,7 +37,7 @@ export default class Login extends React.Component {
                         <label>Email</label><input type="text" className="form-control mb-3 w-60" value={this.state.email} name="email" onChange={this.updateFormField} />
                         <label>Password</label><input type="text" className="form-control mb-3 w-60" value={this.state.password} name="password" onChange={this.updateFormField} />
                         <button className="btn btn-sm btn-primary" onClick={() => {
-                            authService.userLogin(this.state.email, this.state.password)
+                            this.loginButton(this.state.email,this.state.password)
                         }}>Sign in!</button>
                           <p>Not a member? Sign up now <a href="/signup">here!</a></p>
                     </div>
@@ -44,6 +47,11 @@ export default class Login extends React.Component {
         </React.Fragment>
     }
 
+    loginButton=async (email,password)=>{
+        await authService.userLogin(email,password)
+        
+        window.location.replace("/")
+    }
 
     updateFormField = (e) => {
         this.setState({

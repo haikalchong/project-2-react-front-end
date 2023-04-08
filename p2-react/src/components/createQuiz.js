@@ -59,12 +59,12 @@ export default class CreateQuiz extends React.Component {
                     <div className="card" style={{ width: "60%", height: "fit-content" }}>
 
                         <div className="card-body">
-                            <h5 class="card-title mb-3 text-center">Create Quiz</h5>
+                            <h5 className="card-title mb-3 text-center">Create Quiz</h5>
                             <label>Quiz Name</label>
                             <input type="text" value={this.state.quizName} className="form-control mb-3 w-60" name="quizName" onChange={this.updateFormField} />
 
                             <label>Topic</label>
-                            <select value={this.state.level} name="level" className="form-control mb-3 w-60" onChange={this.updateFormField}>
+                            <select value={this.state.topic} name="level" className="form-control mb-3 w-60" onChange={this.updateFormField}>
                                 <option value="English" name="topic">English</option>
                                 <option value="Math" name="topic">Math</option>
                                 <option value="Science" name="topic">Science</option>
@@ -185,6 +185,8 @@ export default class CreateQuiz extends React.Component {
         const topicToUpdate = await axios.put(url + "/genre/" + this.state.topic, quizObj)
 
         const userToUpdate = await axios.put(url + "/userQuiz/" + this.state.createdBy, quizObj)
+
+        window.location.replace("/doQuiz")
         
 
 

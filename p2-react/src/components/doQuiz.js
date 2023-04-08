@@ -30,7 +30,7 @@ export class DoQuiz extends React.Component {
     componentDidMount = async () => {
         const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
-        console.log(result.data.result)
+        
         this.setState({
             quizzes: result.data.result,
             totalQuestions: result.data.result.totalQuestions
@@ -48,7 +48,7 @@ export class DoQuiz extends React.Component {
 
         if (this.state.activePage === "quiz") {
             return <React.Fragment>
-                {console.log("here")}
+               
                 <div>
                     {this.state.quizzes.map(
                         (d, e) => {
@@ -116,6 +116,7 @@ export class DoQuiz extends React.Component {
 
 
                                 })
+                                
                             } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
 
                                 this.setState({

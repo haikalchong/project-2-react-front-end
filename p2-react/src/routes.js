@@ -16,35 +16,23 @@ import CreateQuiz from "./components/createQuiz";
 import { AppWrapper } from "./components/AppWrapper";
 import { DoQuiz } from "./components/doQuiz";
 import { Profile } from "./components/profile";
+import Auth from "./components/auth";
 
 
 export class AppRoute extends React.Component {
 
-    componentDidMount= () =>{
-
-        const userData =  localStorage.getItem("user")
-
-        const userDataJSON = JSON.parse(userData)
-
-        if(userDataJSON){
-            this.setState({
-                userLogged: false
-            })
-        }
-
-    
-
-    }
+  
 
 
     state = {
 
-        userLogged:true
-        
-      
+        userLogged: false
+
+
 
     }
 
+ 
 
 
     render() {
@@ -58,15 +46,14 @@ export class AppRoute extends React.Component {
 
                 </Route>
 
-                <Route
-                    exact
+                <Route exact
                     path="/doQuiz"
                     element={
-                        this.state.userLogged===true ? (
+                      
+                        <Auth>
                             <DoQuiz />
-                        ) : (
-                            <Navigate replace to={"/login"} />
-                        )
+                            </Auth>
+                      
                     }
                 />
 
@@ -74,39 +61,32 @@ export class AppRoute extends React.Component {
 
                 </Route>
 
-                <Route
+                 <Route
                     exact
                     path="/createQuiz"
                     element={
-                        this.state.userLogged===true ? (
-                            <CreateQuiz />
-                        ) : (
-                            <Navigate replace to={"/login"} />
-                        )
+                        <Auth>
+                        <CreateQuiz />
+                    </Auth>
                     }
-                />
+                /> 
 
                 <Route
                     exact
                     path="/"
                     element={
-                        this.state.userLogged===true ? (
-                            <Dashboard />
-                        ) : (
-                            <Navigate replace to={"/login"} />
-                        )
+                        <Auth>
+                        <Dashboard />
+                    </Auth>
                     }
                 />
-                  <Route
+                <Route
                     exact
                     path="/profile"
                     element={
-                        this.state.userLogged===true ? (
-                            <Profile />
-                        ) : (
-                            <Navigate replace to={"/login"} />
-                           
-                        )
+                        <Auth>
+                        <Profile />
+                    </Auth>
                     }
                 />
 
