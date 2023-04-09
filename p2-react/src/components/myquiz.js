@@ -34,10 +34,10 @@ export class MyQuiz extends React.Component{
         createdQuestion: '',
         options: [],
         correctAnswer: '',
-        optionFirst: '',
-        optionSecond: '',
-        optionThird: '',
-        optionFourth: ''
+        // optionFirst: '',
+        // optionSecond: '',
+        // optionThird: '',
+        // optionFourth: ''
     }
 
     updateFormField=(e)=>{
