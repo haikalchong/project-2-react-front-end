@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "./navbar";
 
 
+const url="https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
 
 export class Profile extends React.Component {
 
@@ -15,9 +16,17 @@ export class Profile extends React.Component {
     }
 
     state = {
-        data: []
+        data: [],
+        activePage:'home'
     }
 
+    renderPage=()=>{
+        if (this.state.activePage==='home'){
+            return <div>
+
+            </div>
+        }
+    }
 
 
     render() {

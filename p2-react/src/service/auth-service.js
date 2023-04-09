@@ -6,7 +6,7 @@ import axios from "axios";
 
  const signup= async (x) =>{
 
-    const dburl = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
   
     const addNewUser = await axios.post(dburl + "/user", x)
 
@@ -19,7 +19,7 @@ import axios from "axios";
 
 
   const userLogin =  async(email,password)=> {
-    const dburl = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
+    const dburl = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
     console.log(email,password)
     const userid = {
         email: email,

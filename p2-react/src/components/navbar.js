@@ -41,7 +41,10 @@ export function Navbar(props) {
 
 
 
-                        <button className="btn btn-outline-success"><a href="/login">Login</a></button>
+                        <button className="btn btn-outline-danger btn-sm" onClick={()=>{
+                            localStorage.clear()
+                            window.location.replace("/login")
+                        }}/>
 
                     </form>
                 </div>

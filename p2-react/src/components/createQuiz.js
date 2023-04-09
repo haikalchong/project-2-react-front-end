@@ -4,7 +4,7 @@ import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
 import { Navbar } from "./navbar";
 
-const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
+const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
 
 export default class CreateQuiz extends React.Component {
 
@@ -110,11 +110,10 @@ export default class CreateQuiz extends React.Component {
                     optionThird={this.state.optionThird}
                     optionFourth={this.state.optionFourth}
                     updateFormField={this.updateFormField}
-                    addQuestion={this.addQuestion} />
-                <button className="btn btn-primary btn-sm" onClick={this.addQuestion}>Add Question</button>
-                <div className="container-fluid">
-                    <button className="btn btn-success btn-sm" onClick={this.addQuiz}>Add Quiz</button>
-                </div>
+                    addQuestion={this.addQuestion}
+                    addQuiz={this.addQuiz} />
+              
+                
 
 
             </div>

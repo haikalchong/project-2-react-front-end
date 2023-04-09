@@ -35,6 +35,10 @@ export class Question extends React.Component {
                         </ul>
 
                         <label>Correct Answer</label><input type="text" name="correctAnswer" value={this.props.correctAnswer} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
+
+                        <button className="btn btn-primary btn-sm" onClick={props.addQuestion}>Add Question</button>
+
+                        <button className="btn btn-success btn-sm" onClick={props.addQuiz}>Add Quiz</button>
                     </div>
                 </div>
             </div>
