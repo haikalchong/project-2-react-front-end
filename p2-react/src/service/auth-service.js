@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -9,6 +9,8 @@ import axios from "axios";
     const dburl = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
   
     const addNewUser = await axios.post(dburl + "/user", x)
+    
+    window.location.replace("/login")
 
 
  
@@ -18,11 +20,11 @@ import axios from "axios";
 }
 
 
-  const userLogin =  async(email,password)=> {
+  const userLogin =  async(username,password)=> {
     const dburl = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
-    console.log(email,password)
+    
     const userid = {
-        email: email,
+        username: username,
         password: password
     }
     const result = await axios.post(dburl + "/login", userid)

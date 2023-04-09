@@ -17,6 +17,7 @@ import { AppWrapper } from "./components/AppWrapper";
 import { DoQuiz } from "./components/doQuiz";
 import { Profile } from "./components/profile";
 import Auth from "./components/auth";
+import { Search } from "./components/search";
 
 
 export class AppRoute extends React.Component {
@@ -52,6 +53,16 @@ export class AppRoute extends React.Component {
                       
                         <Auth>
                             <DoQuiz />
+                            </Auth>
+                      
+                    }
+                />
+                <Route exact
+                    path="/search"
+                    element={
+                      
+                        <Auth>
+                            <Search />
                             </Auth>
                       
                     }

@@ -8,12 +8,10 @@ export default class Login extends React.Component {
     state = {
         firstName: "",
         lastName: "",
-        email: "",
+        username: "",
         quizCreated: [],
-        quizDone: [],
         password: "",
         login: "signup",
-        loggedin: false
     }
 
    
@@ -34,10 +32,10 @@ export default class Login extends React.Component {
 
                     <div className="card-body">
                         <h5 className="card-title mb-3 text-center">Login</h5>
-                        <label>Email</label><input type="text" className="form-control mb-3 w-60" value={this.state.email} name="email" onChange={this.updateFormField} />
+                        <label>Username</label><input type="text" className="form-control mb-3 w-60" value={this.state.username} name="username" onChange={this.updateFormField} />
                         <label>Password</label><input type="text" className="form-control mb-3 w-60" value={this.state.password} name="password" onChange={this.updateFormField} />
                         <button className="btn btn-sm btn-primary" onClick={() => {
-                            this.loginButton(this.state.email,this.state.password)
+                            this.loginButton(this.state.username,this.state.password)
                         }}>Sign in!</button>
                           <p>Not a member? Sign up now <a href="/signup">here!</a></p>
                     </div>
@@ -47,8 +45,8 @@ export default class Login extends React.Component {
         </React.Fragment>
     }
 
-    loginButton=async (email,password)=>{
-        await authService.userLogin(email,password)
+    loginButton=async (username,password)=>{
+        await authService.userLogin(username,password)
         
         window.location.replace("/")
     }

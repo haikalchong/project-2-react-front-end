@@ -1,14 +1,11 @@
 import React from 'react'
 
 
-export class Question extends React.Component {
+export function Question(props) {
 
 
-
-
-
-    render() {
-        return <React.Fragment>
+    
+        return( <React.Fragment>
 
 
             <div style={{
@@ -24,17 +21,17 @@ export class Question extends React.Component {
                     <div className="card-body">
                         <h5 className="card-title mb-3 text-center">Create Question</h5>
                         <label>Enter Question</label>
-                        <input type="text" name="createdQuestion" value={this.props.createdQuestion} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
+                        <input type="text" name="createdQuestion" value={props.createdQuestion} className="form-control mb-3 w-60" onChange={props.updateFormField} />
 
 
                         <ul>
-                            <label>Option 1</label><input type="text" name="optionFirst" value={this.props.optionFirst} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
-                            <label>Option 2</label><input type="text" name="optionSecond" value={this.props.optionSecond} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
-                            <label>Option 3</label><input type="text" name="optionThird" value={this.props.optionThird} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
-                            <label>Option 4</label><input type="text" name="optionFourth" value={this.props.optionFourth} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
+                            <label>Option 1</label><input type="text" name="optionFirst" value={props.optionFirst} className="form-control mb-3 w-60" onChange={props.updateFormField} />
+                            <label>Option 2</label><input type="text" name="optionSecond" value={props.optionSecond} className="form-control mb-3 w-60" onChange={props.updateFormField} />
+                            <label>Option 3</label><input type="text" name="optionThird" value={props.optionThird} className="form-control mb-3 w-60" onChange={props.updateFormField} />
+                            <label>Option 4</label><input type="text" name="optionFourth" value={props.optionFourth} className="form-control mb-3 w-60" onChange={props.updateFormField} />
                         </ul>
 
-                        <label>Correct Answer</label><input type="text" name="correctAnswer" value={this.props.correctAnswer} className="form-control mb-3 w-60" onChange={this.props.updateFormField} />
+                        <label>Correct Answer</label><input type="text" name="correctAnswer" value={props.correctAnswer} className="form-control mb-3 w-60" onChange={props.updateFormField} />
 
                         <button className="btn btn-primary btn-sm" onClick={props.addQuestion}>Add Question</button>
 
@@ -46,5 +43,6 @@ export class Question extends React.Component {
 
 
         </React.Fragment>
-    }
+        )
+    
 }

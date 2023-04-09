@@ -11,20 +11,7 @@ import { AppRoute } from "./routes";
 
 
 function App() {
-  // const [token, setToken] = useState();
-  // if(!token){
-  //   return <Login setToken={setToken}/>
-  // }
-  // const userId= localStorage.getItem()
-  // if (!userData){
-  //   return <Login/>
-  // }
-
-
-  // componentDidMount(){
-  //   const token = localStorage.getItem("token")
-
-  // }
+ 
 
   return (
 

@@ -21,14 +21,14 @@ export class DoQuiz extends React.Component {
 
 
     getAllQuizes = async () => {
-        const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
+        const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
         console.log(result.data.result)
         return result.data;
     }
 
     componentDidMount = async () => {
-        const url = "https://2999-haikalchong-project2bac-yfsr0me1brf.ws-us93.gitpod.io"
+        const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
         
         this.setState({
@@ -99,7 +99,7 @@ export class DoQuiz extends React.Component {
                         
                             {this.state.questions[this.state.activeQuestion].options.map(
                                 (o, i) => {
-                                    return  <ul className="list-group" key={i}>
+                                    return  <ul className="list-group list-group-flush" key={i}>
                                         <li className="list-group-item"><label>{o}</label><input type="radio" className="form-check-input me-1 active" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
                                     </ul>
                                     

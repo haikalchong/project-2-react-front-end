@@ -9,7 +9,7 @@ const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
 export default class CreateQuiz extends React.Component {
 
     state = {
-        topic: '',
+        topic: 'english',
         quizName: "",
         level: 'beginner',
         totalQuestions: '',
@@ -27,14 +27,14 @@ export default class CreateQuiz extends React.Component {
     }
 
 
-    // componentDidMount() {
-    //     const userData = localStorage.getItem("user")
-    //     const userDataJSON = JSON.parse(userData)
-    //     this.setState({
-    //         firstName: userDataJSON.firstName,
-    //         createdBy: userDataJSON._id
-    //     })
-    // }
+    componentDidMount() {
+        const userData = localStorage.getItem("user")
+        const userDataJSON = JSON.parse(userData)
+        this.setState({
+            firstName: userDataJSON.firstName,
+            createdBy: userDataJSON._id
+        })
+    }
     updateFormField = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -64,12 +64,12 @@ export default class CreateQuiz extends React.Component {
                             <input type="text" value={this.state.quizName} className="form-control mb-3 w-60" name="quizName" onChange={this.updateFormField} />
 
                             <label>Topic</label>
-                            <select value={this.state.topic} name="level" className="form-control mb-3 w-60" onChange={this.updateFormField}>
+                            <select value={this.state.topic} name="topic" className="form-control mb-3 w-60" onChange={this.updateFormField}>
                                 <option value="English" name="topic">English</option>
                                 <option value="Math" name="topic">Math</option>
                                 <option value="Science" name="topic">Science</option>
                                 <option value="Humanities" name="topic">Humanities</option>
-                                <option value="Programming" name="topic">Programming</option>
+                                <option value="General" name="topic">General</option>
                             </select>
 
                             <label>Level</label>

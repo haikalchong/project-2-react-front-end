@@ -36,15 +36,20 @@ export function Navbar(props) {
                             <a className="nav-link" href="/profile">Profile</a>
 
                         </li>
+                        <li className="nav-item">
+
+                            <a className="nav-link" href="/search">Search</a>
+
+                        </li>
                     </ul>
                     <form className="d-flex">
 
 
 
-                        <button className="btn btn-outline-danger btn-sm" onClick={()=>{
+                        <button className="btn btn-outline-danger btn-sm" onClick={() => {
                             localStorage.clear()
                             window.location.replace("/login")
-                        }}/>
+                        }}  > Log Out</button>
 
                     </form>
                 </div>
