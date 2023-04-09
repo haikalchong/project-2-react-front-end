@@ -21,14 +21,14 @@ export class DoQuiz extends React.Component {
 
 
     getAllQuizes = async () => {
-        const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
+        const url = "https://2999-haikalchong-project2bac-s4lsw6lvits.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
         console.log(result.data.result)
         return result.data;
     }
 
     componentDidMount = async () => {
-        const url = "https://2999-haikalchong-project2bac-1upnv0atgru.ws-us93.gitpod.io"
+        const url = "https://2999-haikalchong-project2bac-s4lsw6lvits.ws-us93.gitpod.io"
         const result = await axios.get(url + "/quiz")
         
         this.setState({
@@ -52,15 +52,16 @@ export class DoQuiz extends React.Component {
                 <div>
                     {this.state.quizzes.map(
                         (d, e) => {
-                            return <div className="container" key={e}>
-                                <h5> {d.quizName} </h5>
-                                <ul>
-                                    <li>{d.topic}</li>
-                                    <li>{d.quizLevel}</li>
-                                    <li>{d.totalQuestions}</li>
-                                    <li>{d.description}</li>
+                            return <div className="card" style={{ width: "60%", height: "fit-content" }} key={e}>
+                                <div className="card-body">
+                                <h5 className="card-title mb-3"> {d.quizName} </h5>
+                                <ul className="list-group">
+                                    <li className="list-group-item">{d.topic}</li>
+                                    <li className="list-group-item">{d.quizLevel}</li>
+                                    <li className="list-group-item">{d.totalQuestions}</li>
+                                    <li className="list-group-item">{d.description}</li>
                                 </ul>
-                                <button onClick={() => {
+                                <button className="btn btn-primary btn-sm" onClick={() => {
                                     this.setState({
                                         activePage: "start",
                                         id: d._id,
@@ -71,6 +72,7 @@ export class DoQuiz extends React.Component {
 
                                     })
                                 }}>Start Quiz</button>
+                                </div>
                             </div>
 
 

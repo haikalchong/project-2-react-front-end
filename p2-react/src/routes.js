@@ -18,11 +18,12 @@ import { DoQuiz } from "./components/doQuiz";
 import { Profile } from "./components/profile";
 import Auth from "./components/auth";
 import { Search } from "./components/search";
+import { MyQuiz } from "./components/myquiz";
 
 
 export class AppRoute extends React.Component {
 
-  
+
 
 
     state = {
@@ -33,7 +34,7 @@ export class AppRoute extends React.Component {
 
     }
 
- 
+
 
 
     render() {
@@ -50,21 +51,33 @@ export class AppRoute extends React.Component {
                 <Route exact
                     path="/doQuiz"
                     element={
-                      
+
                         <Auth>
                             <DoQuiz />
-                            </Auth>
-                      
+                        </Auth>
+
                     }
                 />
+
+                <Route exact
+                    path="/myQuiz"
+                    element={
+
+                        <Auth>
+                            <MyQuiz />
+                        </Auth>
+
+                    }
+                />
+
                 <Route exact
                     path="/search"
                     element={
-                      
+
                         <Auth>
                             <Search />
-                            </Auth>
-                      
+                        </Auth>
+
                     }
                 />
 
@@ -72,23 +85,23 @@ export class AppRoute extends React.Component {
 
                 </Route>
 
-                 <Route
+                <Route
                     exact
                     path="/createQuiz"
                     element={
                         <Auth>
-                        <CreateQuiz />
-                    </Auth>
+                            <CreateQuiz />
+                        </Auth>
                     }
-                /> 
+                />
 
                 <Route
                     exact
                     path="/"
                     element={
                         <Auth>
-                        <Dashboard />
-                    </Auth>
+                            <Dashboard />
+                        </Auth>
                     }
                 />
                 <Route
@@ -96,8 +109,8 @@ export class AppRoute extends React.Component {
                     path="/profile"
                     element={
                         <Auth>
-                        <Profile />
-                    </Auth>
+                            <Profile />
+                        </Auth>
                     }
                 />
 

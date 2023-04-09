@@ -41,6 +41,12 @@ export function Navbar(props) {
                             <a className="nav-link" href="/search">Search</a>
 
                         </li>
+
+                        <li className="nav-item">
+
+                            <a className="nav-link" href="/myQuiz">My Quiz</a>
+
+                        </li>
                     </ul>
                     <form className="d-flex">
 
