@@ -58,16 +58,7 @@ export default class Login extends React.Component {
     }
 
 
-    // handlelogin = async () => {
-    //     try{
-    //   const userData = await authService.userLogin(this.state.email,this.state.password)
-
-
-
-    //     }catch(err){
-    //         console.log(err)
-    //     } 
-    // }
+   
 
 
 }
