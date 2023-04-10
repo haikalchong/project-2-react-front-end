@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useHistory} from 'react-router-dom'
+
 
 
 
@@ -14,8 +14,6 @@ import {useHistory} from 'react-router-dom'
 
 
  
-    // const navigate= useNavigate()
-    // navigate("/");
 
 }
 
@@ -28,15 +26,13 @@ import {useHistory} from 'react-router-dom'
         password: password
     }
     const result = await axios.post(dburl + "/login", userid)
-    // const token = result.insertedId
+    
     console.log(result.data.token)
     localStorage.setItem("user",JSON.stringify(result.data))
     
     localStorage.setItem("token", result.data.token)
 
-    // const navigate= useNavigate()
-    // navigate("/");
-
+    
 
     
 }

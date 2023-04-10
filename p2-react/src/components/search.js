@@ -38,13 +38,13 @@ export class Search extends React.Component {
                 flexDirection:"column"
 
             }}><div>
-                    <h5 className="card-title mb-3 text-center">Search Quizzes</h5>
+                    <h5 className="mb-3 text-center">Search Quizzes</h5>
                     <label>Search</label><input type="text" className="form-control mb-3 w-60" name="searchTerm" value={this.state.searchTerm} onChange={this.updateFormField} />
                 </div>
                 
 
 
-
+                    <div className="container h-100 w-100">
                     {this.searchResult(this.state.data).map((d, e) => {
                         return <div className="card mb-4" style={{ width: "60%", height: "fit-content" }}>
                         <div className="card-body">
@@ -59,7 +59,7 @@ export class Search extends React.Component {
                         </div>
                     })}
 
-
+</div>
 
 
 

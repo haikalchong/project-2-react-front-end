@@ -3,17 +3,12 @@ import {
     BrowserRouter, Router,
     Routes,
     Route,
-    Link,
-    Redirect,
-    useHistory,
-    useLocation,
-    Navigate
+   
 } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 import { Signup } from "./components/signup";
 import CreateQuiz from "./components/createQuiz";
-import { AppWrapper } from "./components/AppWrapper";
 import { DoQuiz } from "./components/doQuiz";
 import { Profile } from "./components/profile";
 import Auth from "./components/auth";
