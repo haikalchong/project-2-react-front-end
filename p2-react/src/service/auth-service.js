@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom'
 
  const signup= async (x) =>{
 
-    const dburl = "https://2999-haikalchong-project2bac-s4lsw6lvits.ws-us93.gitpod.io"
+    const dburl = "https://express-project-2.onrender.com"
   
     const addNewUser = await axios.post(dburl + "/user", x)
     
@@ -21,7 +21,7 @@ import {useHistory} from 'react-router-dom'
 
 
   const userLogin =  async(username,password)=> {
-    const dburl = "https://2999-haikalchong-project2bac-s4lsw6lvits.ws-us93.gitpod.io"
+    const dburl = "https://express-project-2.onrender.com"
     
     const userid = {
         username: username,

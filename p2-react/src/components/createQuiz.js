@@ -4,7 +4,7 @@ import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
 import { Navbar } from "./navbar";
 
-const url = "https://2999-haikalchong-project2bac-s4lsw6lvits.ws-us93.gitpod.io"
+const url = "https://express-project-2.onrender.com"
 
 export default class CreateQuiz extends React.Component {
 
