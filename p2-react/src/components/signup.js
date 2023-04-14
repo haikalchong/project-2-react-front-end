@@ -1,6 +1,7 @@
 import React from "react";
 import authService from "../service/auth-service";
-import {useHistory} from 'react-router-dom'
+import background from "../images/rainbow-wave.jpg"
+import "../App.css"
 
 export class Signup extends React.Component {
 
@@ -25,17 +26,17 @@ export class Signup extends React.Component {
         return <React.Fragment>
 
             <div style={{
-                backgroundColor: '#edf2f4',
+                backgroundImage: `url(${background})`,
                 height: '100vh',
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: "center"
 
-            }}>
-                <div className="card" style={{ width: "60%", height: "fit-content" }}>
+            }} className="signup">
+                <div className="card" style={{ width: "60%", height: "fit-content",opacity:'0.92' }}>
 
-                    <div className="card-body">
+                    <div className="card-body" style={{opacity:'1'}}>
                         <h5 className="card-title mb-3 text-center">Signup</h5>
                         <label className="mb-2">First Name</label><input type="text" className="form-control mb-3" value={this.state.firstName} name="firstName" onChange={this.updateFormField} />
                         <label className="mb-2">Last Name</label><input type="text" className="form-control mb-3" value={this.state.lastName} name="lastName" onChange={this.updateFormField} />
