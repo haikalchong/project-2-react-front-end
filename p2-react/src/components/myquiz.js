@@ -34,11 +34,13 @@ export class MyQuiz extends React.Component {
         description: "",
         createdQuestion: '',
         options: [],
-        correctAnswer: '',
-        // optionFirst: '',
-        // optionSecond: '',
-        // optionThird: '',
-        // optionFourth: ''
+        newCorrectAnswer: '',
+        newOptionFirst: '',
+        newOptionSecond: '',
+        newOptionThird: '',
+        newOptionFourth: '',
+        newQuestion:'',
+        updatedQuestion:[]
     }
 
     updateFormField = (e) => {
@@ -72,7 +74,11 @@ export class MyQuiz extends React.Component {
                                 })
                             }
                             }>Update</button>
-                            <button className="btn btn-danger btn-sm ms-2 mt-2">Delete</button>
+                            <button className="btn btn-danger btn-sm ms-2 mt-2" onClick={async ()=>{
+                                    const deleteQuiz = await axios.delete(url+`/quiz/${o._id}`)
+                                    alert("Quiz Deleted")
+                                    window.location.replace("/myQuiz")
+                            }}>Delete</button>
                         </div>
                     </div>
                 })}
@@ -125,15 +131,21 @@ export class MyQuiz extends React.Component {
             </div>
         } if (this.state.activePage === "questions") {
             return <div className="card" style={{ width: "60%", height: "fit-content" }}>
+                <div>
+                    <h5>Edit Questions</h5>
+                </div>
                 
                 {this.state.editedQuiz.o.questions.map((x,y)=>{
                     return <div key={y} className="card-body">
-                        <input className="form-control">{x.question}</input>
+                        <input className="form-control" type='text' value={x.question} name='newQuestion' onChange={this.updateFormField}></input>
                         <ul className="list-group">
-                            {x.options.map((a,b)=>{
-                                return <input className="list-group-item" key={b}>{a}</input>
-                            })}
+                            <label>Option 1</label><input value={x.options[0]} name="newOptionFirst" type='text' onChange={this.updateFormField}/>
+                            <label>Option 2</label><input value={x.options[1]} name="newOptionSecond" type='text' onChange={this.updateFormField}/>
+                            <label>Option 3</label><input value={x.options[2]} name="newOptionThird" type='text' onChange={this.updateFormField}/>
+                            <label>Option 4</label><input value={x.options[3]} name="newOptionFourth" type='text' onChange={this.updateFormField}/>
+                            <label>Correct Answer</label><input value={x.correctAnswer} name="correctAnswer" type='text' onChange={this.updateFormField}/>
                         </ul>
+                        <button className="btn btn-primary btn-sm">Update Question</button>
 
 
 

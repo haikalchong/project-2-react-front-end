@@ -3,6 +3,7 @@ import React from 'react'
 import background from "../images/rainbow-wave.jpg"
 import "../App.css"
 import { Navbar } from "./navbar";
+import resultImage from "../images/result-image.jpg"
 
 
 export class DoQuiz extends React.Component {
@@ -23,7 +24,7 @@ export class DoQuiz extends React.Component {
 
     getAllQuizes = async () => {
         // const url = "https://express-project-2.onrender.com"
-        const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
+        const url = "https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
         const result = await axios.get(url + "/quiz")
         console.log(result.data.result)
         return result.data;
@@ -31,9 +32,9 @@ export class DoQuiz extends React.Component {
 
     componentDidMount = async () => {
         // const url = "https://express-project-2.onrender.com"
-        const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
+        const url = "https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
         const result = await axios.get(url + "/quiz")
-        
+
         this.setState({
             quizzes: result.data.result,
             totalQuestions: result.data.result.totalQuestions
@@ -51,30 +52,30 @@ export class DoQuiz extends React.Component {
 
         if (this.state.activePage === "quiz") {
             return <React.Fragment>
-               
+
                 <div>
                     {this.state.quizzes.map(
                         (d, e) => {
                             return <div className="card" style={{ width: "60%", height: "fit-content" }} key={e}>
                                 <div className="card-body">
-                                <h5 className="card-title mb-3"> {d.quizName} </h5>
-                                <ul className="list-group">
-                                    <li className="list-group-item">{d.topic}</li>
-                                    <li className="list-group-item">{d.quizLevel}</li>
-                                    <li className="list-group-item">{d.totalQuestions}</li>
-                                    <li className="list-group-item">{d.description}</li>
-                                </ul>
-                                <button className="btn btn-primary btn-sm" onClick={() => {
-                                    this.setState({
-                                        activePage: "start",
-                                        id: d._id,
-                                        questions: d.questions,
-                                        totalQuestions: d.totalQuestions,
-                                        correctAnswer: d.questions[this.state.activeQuestion].correctAnswer
+                                    <h5 className="card-title mb-3"> {d.quizName} </h5>
+                                    <ul className="list-group">
+                                        <li className="list-group-item">{d.topic}</li>
+                                        <li className="list-group-item">{d.quizLevel}</li>
+                                        <li className="list-group-item">{d.totalQuestions}</li>
+                                        <li className="list-group-item">{d.description}</li>
+                                    </ul>
+                                    <button className="btn btn-primary btn-sm" onClick={() => {
+                                        this.setState({
+                                            activePage: "start",
+                                            id: d._id,
+                                            questions: d.questions,
+                                            totalQuestions: d.totalQuestions,
+                                            correctAnswer: d.questions[this.state.activeQuestion].correctAnswer
 
 
-                                    })
-                                }}>Start Quiz</button>
+                                        })
+                                    }}>Start Quiz</button>
                                 </div>
                             </div>
 
@@ -99,56 +100,56 @@ export class DoQuiz extends React.Component {
                 }}>
                     <div className="card" style={{ width: "60%", height: "fit-content" }}>
 
-                      <div className="card-body">
-                        <h5 className="card-title mb-3 text-center">{this.state.questions[this.state.activeQuestion].question}</h5>
-                        
+                        <div className="card-body">
+                            <h5 className="card-title mb-3 text-center">{this.state.questions[this.state.activeQuestion].question}</h5>
+
                             {this.state.questions[this.state.activeQuestion].options.map(
                                 (o, i) => {
-                                    return  <ul className="list-group list-group-flush" key={i}>
+                                    return <ul className="list-group list-group-flush" key={i}>
                                         <li className="list-group-item mb-2"><label>{o}</label><input type="radio" className="form-check-input me-1 active" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
                                     </ul>
-                                    
+
                                 })}
-                        
-                        <button name="activeQuestion" className="btn btn-sm btn-primary" onClick={() => {
 
-                            if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
+                            <button name="activeQuestion" className="btn btn-sm btn-primary" onClick={() => {
 
-                                this.setState({
-                                    activePage: "result",
-                                    score: this.state.score + 5,
+                                if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
 
-
-
-                                })
-                                
-                            } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
-
-                                this.setState({
-                                    activePage: "result",
+                                    this.setState({
+                                        activePage: "result",
+                                        score: this.state.score + 5,
 
 
-                                })
-                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
+
+                                    })
+
+                                } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
+
+                                    this.setState({
+                                        activePage: "result",
 
 
-                                this.setState({
-                                    activeQuestion: this.state.activeQuestion + 1,
-                                    score: this.state.score + 5,
-                                    selectedOption: "",
-                                    correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
-                                })
-                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
+                                    })
+                                } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer === this.state.selectedOption) {
 
-                                this.setState({
-                                    activeQuestion: this.state.activeQuestion + 1,
-                                    selectedOption: "",
-                                    correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
-                                })
-                            }
 
-                        }}>Next</button>
-                        </div>  
+                                    this.setState({
+                                        activeQuestion: this.state.activeQuestion + 1,
+                                        score: this.state.score + 5,
+                                        selectedOption: "",
+                                        correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
+                                    })
+                                } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
+
+                                    this.setState({
+                                        activeQuestion: this.state.activeQuestion + 1,
+                                        selectedOption: "",
+                                        correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
+                                    })
+                                }
+
+                            }}>Next</button>
+                        </div>
                     </div>
                 </div>
 
@@ -156,11 +157,30 @@ export class DoQuiz extends React.Component {
             </React.Fragment>
         }
         if (this.state.activePage === 'result') {
-            return <div className="resultPage">
-                <h2>Congratulations you have completed the quiz!</h2>
-                <p>Your score is : {this.state.score}</p>
-                <p>Good Job!</p>
-                <p> Ready for another challenge? Click <span><a href="/doQuiz">Here</a></span> </p>
+            return <div className="resultPage" style={{
+                backgroundImage: `url(${resultImage})`,
+                backgroundSize: "cover",
+                height: '100vh',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: "column",
+                flexWrap: 'wrap'
+
+            }}>
+                <div style={{
+                backgroundColor: '#edf2f4',
+                height: 'auto',
+                width: '30%',
+                border: '1px solid black',
+                borderRadius: '6px',
+                textAlign:'center'}} className='m-3 p-3'>
+                    <h2>Congratulations you have completed the quiz!</h2>
+                    <p>Your score is : {this.state.score}</p>
+                    <p>How does that brain massage feel like?</p>
+                    <p> Ready for another challenge? Click <span><a href="/doQuiz">Here</a></span> </p>
+                </div>
             </div>
 
 
