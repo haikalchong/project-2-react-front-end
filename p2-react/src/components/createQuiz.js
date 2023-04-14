@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Question } from './questions'
 import { RenderQuestion } from './renderQuestion'
 import { Navbar } from "./navbar";
+import background from "../images/rainbow-wave.jpg"
+import "../App.css"
 
 // const url = "https://express-project-2.onrender.com"
 const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
@@ -47,7 +49,7 @@ export default class CreateQuiz extends React.Component {
         if (this.state.page === "createQuiz") {
             return <React.Fragment>
                 <div style={{
-                    backgroundColor: '#edf2f4',
+                    backgroundImage: `url(${background})`,
                     height: '100vh',
                     width: '100%',
                     display: 'flex',

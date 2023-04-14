@@ -41,3 +41,39 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
+#info{
+  color:black;
+  background-color:rgba(255,255,255, 0.85);
+}
+
+.resultPage{
+  color:black;
+  background-color:rgba(255,255,255, 0.85);
+  font-family: 'Open Sans', sans-serif;
+  border: 1x solid black;
+  border-radius: 8px;
+
+}
+
+@media (min-width:769px){
+
+  #carousel {
+    position:relative;
+    height:100%;
+  }
+  #info{
+    position:absolute;
+    right:30px;
+    top:250px;
+    color:black;
+    background-color:rgba(255,255,255, 0.85);
+    z-index:10;
+    width:40%;
+
+  }
+}
+
+.wannabeContainer {
+  border: 1x solid black;
+  border-radius: 8px;
+}

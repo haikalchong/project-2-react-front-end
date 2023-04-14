@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-
+import background from "../images/rainbow-wave.jpg"
+import "../App.css"
 import { Navbar } from "./navbar";
 
 
@@ -88,7 +89,7 @@ export class DoQuiz extends React.Component {
 
             return <React.Fragment>
                 <div style={{
-                    backgroundColor: '#edf2f4',
+                    backgroundImage: `url(${background})`,
                     height: '100vh',
                     width: '100%',
                     display: 'flex',
@@ -104,7 +105,7 @@ export class DoQuiz extends React.Component {
                             {this.state.questions[this.state.activeQuestion].options.map(
                                 (o, i) => {
                                     return  <ul className="list-group list-group-flush" key={i}>
-                                        <li className="list-group-item"><label>{o}</label><input type="radio" className="form-check-input me-1 active" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
+                                        <li className="list-group-item mb-2"><label>{o}</label><input type="radio" className="form-check-input me-1 active" value={o} name="selectedOption" onChange={this.updateFormField} /></li>
                                     </ul>
                                     
                                 })}
@@ -121,7 +122,7 @@ export class DoQuiz extends React.Component {
 
                                 })
                                 
-                            } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+                            } else if (this.state.activeQuestion === this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
 
                                 this.setState({
                                     activePage: "result",
@@ -137,7 +138,7 @@ export class DoQuiz extends React.Component {
                                     selectedOption: "",
                                     correctAnswer: this.state.questions[this.state.activeQuestion].correctAnswer
                                 })
-                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer != this.state.selectedOption) {
+                            } else if (this.state.activeQuestion < this.state.totalQuestions - 1 && this.state.questions[this.state.activeQuestion].correctAnswer !== this.state.selectedOption) {
 
                                 this.setState({
                                     activeQuestion: this.state.activeQuestion + 1,
@@ -155,7 +156,7 @@ export class DoQuiz extends React.Component {
             </React.Fragment>
         }
         if (this.state.activePage === 'result') {
-            return <div>
+            return <div className="resultPage">
                 <h2>Congratulations you have completed the quiz!</h2>
                 <p>Your score is : {this.state.score}</p>
                 <p>Good Job!</p>

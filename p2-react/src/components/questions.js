@@ -1,4 +1,6 @@
 import React from 'react'
+import "../App.css"
+import background from "../images/rainbow-wave.jpg"
 
 
 export function Question(props) {
@@ -9,7 +11,7 @@ export function Question(props) {
 
 
             <div style={{
-                backgroundColor: '#edf2f4',
+                backgroundImage: `url(${background})`,
                 height: '100vh',
                 width: '100%',
                 display: 'flex',
@@ -33,7 +35,7 @@ export function Question(props) {
 
                         <label>Correct Answer</label><input type="text" name="correctAnswer" value={props.correctAnswer} className="form-control mb-3 w-60" onChange={props.updateFormField} />
 
-                        <button className="btn btn-primary btn-sm" onClick={props.addQuestion}>Add Question</button>
+                        <button className="btn btn-primary btn-sm me-2" onClick={props.addQuestion}>Add Question</button>
 
                         <button className="btn btn-success btn-sm" onClick={props.addQuiz}>Add Quiz</button>
                     </div>
