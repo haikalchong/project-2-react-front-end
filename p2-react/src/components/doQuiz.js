@@ -21,14 +21,16 @@ export class DoQuiz extends React.Component {
 
 
     getAllQuizes = async () => {
-        const url = "https://express-project-2.onrender.com"
+        // const url = "https://express-project-2.onrender.com"
+        const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
         const result = await axios.get(url + "/quiz")
         console.log(result.data.result)
         return result.data;
     }
 
     componentDidMount = async () => {
-        const url = "https://express-project-2.onrender.com"
+        // const url = "https://express-project-2.onrender.com"
+        const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
         const result = await axios.get(url + "/quiz")
         
         this.setState({

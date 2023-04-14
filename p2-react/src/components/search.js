@@ -1,7 +1,8 @@
 import React from 'react'
 import { Navbar } from './navbar'
 import axios from 'axios'
-const url = "https://express-project-2.onrender.com"
+// const url = "https://express-project-2.onrender.com"
+const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
 
 export class Search extends React.Component {
 

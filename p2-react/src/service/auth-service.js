@@ -6,7 +6,8 @@ import axios from "axios";
 
  const signup= async (x) =>{
 
-    const dburl = "https://express-project-2.onrender.com"
+    // const dburl = "https://express-project-2.onrender.com"
+    const dburl="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
   
     const addNewUser = await axios.post(dburl + "/user", x)
     
@@ -19,7 +20,8 @@ import axios from "axios";
 
 
   const userLogin =  async(username,password)=> {
-    const dburl = "https://express-project-2.onrender.com"
+    // const dburl = "https://express-project-2.onrender.com"
+    const dburl="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
     
     const userid = {
         username: username,

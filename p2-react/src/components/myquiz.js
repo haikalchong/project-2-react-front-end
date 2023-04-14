@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Navbar } from "./navbar";
 
-const url = "https://express-project-2.onrender.com"
+// const url = "https://express-project-2.onrender.com"
+const url="https://5500-haikalchong-project2bac-n2hfdmcsiuh.ws-us94.gitpod.io"
 
 export class MyQuiz extends React.Component {
 
