@@ -145,7 +145,14 @@ export class MyQuiz extends React.Component {
                             <label>Option 4</label><input value={x.options[3]} name="newOptionFourth" type='text' onChange={this.updateFormField}/>
                             <label>Correct Answer</label><input value={x.correctAnswer} name="correctAnswer" type='text' onChange={this.updateFormField}/>
                         </ul>
-                        <button className="btn btn-primary btn-sm">Update Question</button>
+                        <button className="btn btn-primary btn-sm" onClick={()=>{
+                            let questionToEdit = []
+                            questionToEdit.push(this.state.editedQuiz.o.questions[y])
+                            this.setState({
+                                updatedQuestion : questionToEdit
+                            })
+
+                        }}>Edit Question</button>
 
 
 
